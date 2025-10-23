@@ -16,7 +16,7 @@ public class InputTest {
         String expectedCarNamesInput = "pobi,woni,jun";
 
         // when
-        List<String> actualCarNameList = InputManager.parseCarNames(expectedCarNamesInput);
+        List<String> actualCarNameList = CarNameParser.parseCarNames(expectedCarNamesInput);
 
         // then
         assertThat(actualCarNameList).containsExactly("pobi", "woni", "jun");

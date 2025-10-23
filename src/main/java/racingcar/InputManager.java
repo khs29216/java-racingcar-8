@@ -11,7 +11,4 @@ public class InputManager {
         return Console.readLine();
     }
 
-    public static List<String> parseCarNames(String carNamesInput) {
-        return Arrays.stream(carNamesInput.split(",")).toList();
-    }
 }
