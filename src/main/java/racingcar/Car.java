@@ -1,5 +1,9 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.Random;
+
 public class Car {
     private final String name;
     private int position = 0;
@@ -8,7 +12,16 @@ public class Car {
         this.name = name;
     }
 
+    // 테스트용 move 메서드
     public void move(int randomNumber) {
+        if (randomNumber >= 4) {
+            position++;
+        }
+    }
+
+    // 실제 사용할 move 메서드
+    public void move() {
+        int randomNumber = Randoms.pickNumberInRange(0, 9);
         if (randomNumber >= 4) {
             position++;
         }
