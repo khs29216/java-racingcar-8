@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class InputTest {
     @Test
@@ -36,5 +36,18 @@ public class InputTest {
                         .map(Car::getName)
                         .collect(Collectors.toList());
         assertThat(actualCarNameList).containsExactly("pobi", "woni", "jun");
+    }
+
+    @Test
+    @DisplayName("시도할 횟수를 정상적으로 입력했을 경우, Race 객체에 시도 횟수를 저장한다")
+    void 시도_횟수_정상입력() {
+        // given
+        int expectedRoundCount = 5;
+
+        // when
+        Race actualRace = new Race(expectedRoundCount);
+
+        // then
+        assertThat(actualRace.getRoundCount()).isEqualTo(expectedRoundCount);
     }
 }
