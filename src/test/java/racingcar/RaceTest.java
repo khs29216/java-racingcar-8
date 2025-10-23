@@ -1,0 +1,30 @@
+package racingcar;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class RaceTest {
+
+    @Test
+    @DisplayName("라운드 진행 시, 각 자동차가 랜덤 값에 따라 이동한다")
+    void playRound_테스트() {
+        // given
+        List<Car> carList = List.of(new Car("pobi"), new Car("woni"), new Car("jun"));
+        List<Integer> randomNumbers = List.of(5, 3, 7);
+        List<Integer> expectedPositions = List.of(1, 0, 1);
+
+        // when
+        Race.playRound(carList, randomNumbers);
+
+        // then
+        List<Integer> actualPositions = carList.stream()
+                .map(Car::getPosition)
+                .toList();
+
+        assertThat(actualPositions).isEqualTo(expectedPositions);
+    }
+}
