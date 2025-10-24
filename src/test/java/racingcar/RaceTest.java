@@ -47,4 +47,38 @@ public class RaceTest {
 
         assertThat(actualPositions).isEqualTo(expectedPositions);
     }
+
+    @Test
+    @DisplayName("가장 멀리간 자동차를 우승자로 선정한다.")
+    void findWinners_우승자_한_명_테스트() {
+        // given
+        List<Car> carList = List.of(new Car("pobi"), new Car("woni"), new Car("jun"));
+        Race race = new Race(3);
+        List<List<Integer>> roundRandomNumbers = List.of(List.of(5, 3, 7), List.of(1, 1, 1), List.of(6, 3, 3));
+        race.startRace(carList, roundRandomNumbers);
+        List<Car> expectedWinner = List.of(new Car("pobi"));
+
+        // when
+        List<Car> actualWinner = race.findWinners(carList);
+
+        // then
+        assertThat(actualWinner).isEqualTo(expectedWinner);
+    }
+
+    @Test
+    @DisplayName("가장 멀리간 자동차를 우승자로 선정하고, 우승자가 여러 명일 수 있다.")
+    void findWinners_우승자_여러_명_테스트() {
+        // given
+        List<Car> carList = List.of(new Car("pobi"), new Car("woni"), new Car("jun"));
+        Race race = new Race(3);
+        List<List<Integer>> roundRandomNumbers = List.of(List.of(5, 3, 7), List.of(1, 1, 1), List.of(6, 3, 6));
+        race.startRace(carList, roundRandomNumbers);
+        List<Car> expectedWinners = List.of(new Car("pobi"), new Car("jun"));
+
+        // when
+        List<Car> actualWinners = race.findWinners(carList);
+
+        // then
+        assertThat(actualWinners).isEqualTo(expectedWinners);
+    }
 }
