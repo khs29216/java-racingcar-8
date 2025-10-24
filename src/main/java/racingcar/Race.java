@@ -17,6 +17,13 @@ public class Race {
         }
     }
 
+    // 실제 사용할 playRound 메서드
+    private static void playRound(List<Car> carList) {
+        for (Car car : carList) {
+            car.move();
+        }
+    }
+
     public int getRoundCount() {
         return roundCount;
     }
