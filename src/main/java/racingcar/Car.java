@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Car {
@@ -33,5 +34,12 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == null || getClass() != object.getClass()) return false;
+        Car car = (Car) object;
+        return Objects.equals(name, car.name);
     }
 }

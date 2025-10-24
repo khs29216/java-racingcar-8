@@ -1,6 +1,8 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalInt;
 
 public class Race {
     private final int roundCount;
@@ -23,7 +25,6 @@ public class Race {
         }
     }
 
-
     // 테스트용 playRound 메서드
     public static void playRound(List<Car> carList, List<Integer> randomNumbers) {
         for (int i = 0; i < carList.size(); i++) {
@@ -39,7 +40,19 @@ public class Race {
         }
     }
 
+    public List<Car> findWinners(List<Car> carList) {
+        int maxPosition = carList.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .getAsInt();
+
+        return carList.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .toList();
+    }
+
     public int getRoundCount() {
         return roundCount;
     }
+
 }
