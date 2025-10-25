@@ -17,7 +17,7 @@ public class OutputTest {
     }
 
     @Test
-    @DisplayName("라운드 진행시 자동차 이름과 전진상황을 출력한다.")
+    @DisplayName("라운드 진행시 자동차 이름과 위치를 출력한다.")
     void 라운드_출력_테스트() {
         // given
         List<Car> carList = List.of(new Car("aaa"), new Car("bbb"), new Car("ccc"));
