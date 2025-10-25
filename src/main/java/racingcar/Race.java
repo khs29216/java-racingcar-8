@@ -15,6 +15,7 @@ public class Race {
     public void startRace(List<Car> carList, List<List<Integer>> roundRandomNumbers) {
         for (int i = 0; i < roundCount; i++) {
             playRound(carList, roundRandomNumbers.get(i));
+            OutputManager.roundOutput(carList);
         }
     }
 
