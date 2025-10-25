@@ -17,6 +17,7 @@ public class Race {
             playRound(carList, roundRandomNumbers.get(i));
             OutputManager.roundOutput(carList);
         }
+        OutputManager.printWinner(findWinners(carList));
     }
 
     // 실제 사용할 startRace 메서드

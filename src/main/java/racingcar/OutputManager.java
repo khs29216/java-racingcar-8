@@ -17,4 +17,16 @@ public class OutputManager {
             System.out.print("-");
         }
     }
+
+    public static void printWinner(List<Car> winnerCarList) {
+        System.out.print("최종 우승자 : ");
+        for (int i = 0; i < winnerCarList.size(); i++) {
+            System.out.print(winnerCarList.get(i).getName());
+
+            if (i < winnerCarList.size() - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println();
+    }
 }
