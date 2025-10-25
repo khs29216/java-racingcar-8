@@ -24,7 +24,9 @@ public class Race {
     public void startRace(List<Car> carList) {
         for (int i = 0; i < roundCount; i++) {
             playRound(carList);
+            OutputManager.roundOutput(carList);
         }
+        OutputManager.printWinner(findWinners(carList));
     }
 
     // 테스트용 playRound 메서드
