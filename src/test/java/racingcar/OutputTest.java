@@ -32,6 +32,6 @@ public class OutputTest {
 
         // then
         String result = testOutput.toString().trim();
-        assertThat("aaa : -\nbbb :\nccc : -\n").isEqualTo(result);
+        assertThat("aaa : -\nbbb : \nccc : -").isEqualTo(result);
     }
 }
