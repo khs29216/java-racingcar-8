@@ -34,4 +34,40 @@ public class OutputTest {
         String result = testOutput.toString().trim();
         assertThat("aaa : -\nbbb : \nccc : -").isEqualTo(result);
     }
+
+    @Test
+    void winnersPrint_우승자_한_명_테스트() {
+        // given
+        List<Car> carList = List.of(new Car("aaa"), new Car("bbb"), new Car("ccc"));
+        List<List<Integer>> randomNumbers = List.of(List.of(5, 3, 3));
+        Race race = new Race(1);
+
+        ByteArrayOutputStream testOutput = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(testOutput));
+
+        // when
+        race.startRace(carList, randomNumbers);
+
+        // then
+        String result = testOutput.toString().trim();
+        assertThat(result).contains("최종 우승자 : aaa");
+    }
+
+    @Test
+    void winnersPrint_우승자_여러_명_테스트() {
+        // given
+        List<Car> carList = List.of(new Car("aaa"), new Car("bbb"), new Car("ccc"));
+        List<List<Integer>> randomNumbers = List.of(List.of(5, 3, 7));
+        Race race = new Race(1);
+
+        ByteArrayOutputStream testOutput = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(testOutput));
+
+        // when
+        race.startRace(carList, randomNumbers);
+
+        // then
+        String result = testOutput.toString().trim();
+        assertThat(result).contains("최종 우승자 : aaa, ccc");
+    }
 }
