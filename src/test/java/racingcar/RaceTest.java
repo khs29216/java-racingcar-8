@@ -2,6 +2,9 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.controller.Controller;
+import racingcar.model.Car;
+import racingcar.model.Race;
 
 import java.util.List;
 
