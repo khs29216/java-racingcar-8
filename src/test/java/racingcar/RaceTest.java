@@ -68,7 +68,7 @@ public class RaceTest {
                 List.of(6, 3, 6)
         );
         controller.startRace(race, roundRandomNumbers);
-        List<Car> expectedWinners = CarFactory.createCarListFromNames(List.of("pobi", "woni", "jun"));
+        List<Car> expectedWinners = CarFactory.createCarListFromNames(List.of("pobi", "jun"));
 
         // when
         List<Car> actualWinners = race.findWinners();
