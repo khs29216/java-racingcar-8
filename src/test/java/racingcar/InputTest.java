@@ -37,8 +37,8 @@ public class InputTest {
 
         // then
         List<String> actualCarNameList = actualCarList.stream()
-                        .map(Car::getName)
-                        .collect(Collectors.toList());
+                .map(Car::getName)
+                .collect(Collectors.toList());
         assertThat(actualCarNameList).containsExactly("pobi", "woni", "jun");
     }
 
