@@ -8,6 +8,7 @@ public class Race {
 
     public Race(List<Car> carList, int roundCount) {
         InputValidator.validatePositiveNumber(roundCount);
+        InputValidator.validateDuplicateCarNames(carList);
         this.carList = carList;
         this.roundCount = roundCount;
     }

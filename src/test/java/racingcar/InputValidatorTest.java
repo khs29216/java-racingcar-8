@@ -16,6 +16,7 @@ public class InputValidatorTest {
                 () -> assertThrows(IllegalArgumentException.class, () -> CarNameParser.parseCarNames(null))
         );
     }
+
     @Test
     void 문자열_내_공백_예외_테스트() {
         assertAll(
@@ -28,8 +29,12 @@ public class InputValidatorTest {
 
     @Test
     void 중복_이름_입력_예외_테스트() {
-        assertThrows(IllegalArgumentException.class,
-                () -> InputValidator.validateDuplicateCarNames(List.of("aaa", "bbb", "aaa")));
+        assertThrows(IllegalArgumentException.class, () -> InputValidator.validateDuplicateCarNames(
+                List.of(
+                        new Car("aaa"),
+                        new Car("bbb"),
+                        new Car("aaa")
+                )));
     }
 
     @Test

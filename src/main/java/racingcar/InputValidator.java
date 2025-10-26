@@ -1,6 +1,8 @@
 package racingcar;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class InputValidator {
 
@@ -24,8 +26,9 @@ public class InputValidator {
         }
     }
 
-    public static void validateDuplicateCarNames(List<String> inputList) {
-        if (inputList.size() != inputList.stream().distinct().count()) {
+    public static void validateDuplicateCarNames(List<Car> inputList) {
+        Set<Car> carSet = new HashSet<>(inputList);
+        if (carSet.size() != inputList.size()) {
             throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
         }
     }

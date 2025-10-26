@@ -42,4 +42,9 @@ public class Car {
         Car car = (Car) object;
         return Objects.equals(name, car.name);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
+    }
 }
