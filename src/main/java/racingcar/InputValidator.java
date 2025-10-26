@@ -18,11 +18,9 @@ public class InputValidator {
         }
     }
 
-    public static void validateCarNameLength(List<String> carNames) {
-        for (String carName : carNames) {
-            if (carName.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5글자 이하로 입력해야 합니다.");
-            }
+    public static void validateCarNameLength(String input) {
+        if (input.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5글자 이하로 입력해야 합니다.");
         }
     }
 

@@ -35,7 +35,7 @@ public class InputValidatorTest {
     @Test
     void 이름_길이_5이하_예외_테스트() {
         assertThrows(IllegalArgumentException.class,
-                () -> InputValidator.validateCarNameLength(List.of("aaaaa,ababab")));
+                () -> InputValidator.validateCarNameLength("ababab"));
     }
 
     @Test
