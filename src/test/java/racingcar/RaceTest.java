@@ -17,8 +17,9 @@ public class RaceTest {
         List<Integer> randomNumbers = List.of(5, 3, 7);
         List<Integer> expectedPositions = List.of(1, 0, 1);
 
+        Race race = new Race(carList, 1);
         // when
-        Race.playRound(carList, randomNumbers);
+        race.playRound(randomNumbers);
 
         // then
         List<Integer> actualPositions = carList.stream()
@@ -33,12 +34,12 @@ public class RaceTest {
     void startRace_테스트() {
         // given
         List<Car> carList = List.of(new Car("pobi"), new Car("woni"), new Car("jun"));
-        Race race = new Race(3);
+        Race race = new Race(carList, 3);
         List<List<Integer>> roundRandomNumbers = List.of(List.of(5, 3, 7), List.of(1, 1, 1), List.of(6, 3, 3));
         List<Integer> expectedPositions = List.of(2, 0, 1);
 
         // when
-        race.startRace(carList, roundRandomNumbers);
+        race.startRace(roundRandomNumbers);
 
         // then
         List<Integer> actualPositions = carList.stream()
@@ -53,13 +54,13 @@ public class RaceTest {
     void findWinners_우승자_한_명_테스트() {
         // given
         List<Car> carList = List.of(new Car("pobi"), new Car("woni"), new Car("jun"));
-        Race race = new Race(3);
+        Race race = new Race(carList, 3);
         List<List<Integer>> roundRandomNumbers = List.of(List.of(5, 3, 7), List.of(1, 1, 1), List.of(6, 3, 3));
-        race.startRace(carList, roundRandomNumbers);
+        race.startRace(roundRandomNumbers);
         List<Car> expectedWinner = List.of(new Car("pobi"));
 
         // when
-        List<Car> actualWinner = race.findWinners(carList);
+        List<Car> actualWinner = race.findWinners();
 
         // then
         assertThat(actualWinner).isEqualTo(expectedWinner);
@@ -70,13 +71,13 @@ public class RaceTest {
     void findWinners_우승자_여러_명_테스트() {
         // given
         List<Car> carList = List.of(new Car("pobi"), new Car("woni"), new Car("jun"));
-        Race race = new Race(3);
+        Race race = new Race(carList, 3);
         List<List<Integer>> roundRandomNumbers = List.of(List.of(5, 3, 7), List.of(1, 1, 1), List.of(6, 3, 6));
-        race.startRace(carList, roundRandomNumbers);
+        race.startRace(roundRandomNumbers);
         List<Car> expectedWinners = List.of(new Car("pobi"), new Car("jun"));
 
         // when
-        List<Car> actualWinners = race.findWinners(carList);
+        List<Car> actualWinners = race.findWinners();
 
         // then
         assertThat(actualWinners).isEqualTo(expectedWinners);

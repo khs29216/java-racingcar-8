@@ -22,13 +22,13 @@ public class OutputTest {
         // given
         List<Car> carList = List.of(new Car("aaa"), new Car("bbb"), new Car("ccc"));
         List<List<Integer>> randomNumbers = List.of(List.of(5, 3, 7));
-        Race race = new Race(1);
+        Race race = new Race(carList, 1);
 
         ByteArrayOutputStream testOutput = new ByteArrayOutputStream();
         System.setOut(new PrintStream(testOutput));
 
         // when
-        race.startRace(carList, randomNumbers);
+        race.startRace(randomNumbers);
 
         // then
         String result = testOutput.toString().trim();
@@ -40,13 +40,13 @@ public class OutputTest {
         // given
         List<Car> carList = List.of(new Car("aaa"), new Car("bbb"), new Car("ccc"));
         List<List<Integer>> randomNumbers = List.of(List.of(5, 3, 3));
-        Race race = new Race(1);
+        Race race = new Race(carList, 1);
 
         ByteArrayOutputStream testOutput = new ByteArrayOutputStream();
         System.setOut(new PrintStream(testOutput));
 
         // when
-        race.startRace(carList, randomNumbers);
+        race.startRace(randomNumbers);
 
         // then
         String result = testOutput.toString().trim();
@@ -58,13 +58,13 @@ public class OutputTest {
         // given
         List<Car> carList = List.of(new Car("aaa"), new Car("bbb"), new Car("ccc"));
         List<List<Integer>> randomNumbers = List.of(List.of(5, 3, 7));
-        Race race = new Race(1);
+        Race race = new Race(carList, 1);
 
         ByteArrayOutputStream testOutput = new ByteArrayOutputStream();
         System.setOut(new PrintStream(testOutput));
 
         // when
-        race.startRace(carList, randomNumbers);
+        race.startRace(randomNumbers);
 
         // then
         String result = testOutput.toString().trim();

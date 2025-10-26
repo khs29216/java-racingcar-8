@@ -45,7 +45,7 @@ public class InputTest {
         int expectedRoundCount = 5;
 
         // when
-        Race actualRace = new Race(expectedRoundCount);
+        Race actualRace = new Race(List.of(new Car("aaa")), expectedRoundCount);
 
         // then
         assertThat(actualRace.getRoundCount()).isEqualTo(expectedRoundCount);
