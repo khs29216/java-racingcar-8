@@ -1,8 +1,6 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.OptionalInt;
 
 public class Race {
     private final int roundCount;

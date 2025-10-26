@@ -3,7 +3,6 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Objects;
-import java.util.Random;
 
 public class Car {
     private final String name;

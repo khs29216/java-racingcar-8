@@ -1,6 +1,5 @@
 package racingcar;
 
-import javax.xml.validation.Validator;
 import java.util.List;
 
 public class Controller {
