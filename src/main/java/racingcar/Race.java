@@ -8,6 +8,7 @@ public class Race {
     private final int roundCount;
 
     public Race(int roundCount) {
+        InputValidator.validatePositiveNumber(roundCount);
         this.roundCount = roundCount;
     }
 

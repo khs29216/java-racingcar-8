@@ -1,5 +1,6 @@
 package racingcar;
 
+import javax.xml.validation.Validator;
 import java.util.List;
 
 public class Controller {
@@ -12,6 +13,7 @@ public class Controller {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         String roundCount = InputManager.input();
+        InputValidator.validateRoundCount(roundCount);
         Race race = new Race(Integer.parseInt(roundCount));
 
         race.startRace(carList);
