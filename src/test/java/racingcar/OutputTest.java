@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Test;
 import racingcar.controller.Controller;
 import racingcar.model.Car;
 import racingcar.model.Race;
-import racingcar.view.OutputManager;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -15,6 +16,8 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OutputTest {
+    private final Controller controller = new Controller(new InputView(), new OutputView());
+
     @AfterAll
     static void afterAll() {
         System.setOut(System.out);
@@ -32,11 +35,11 @@ public class OutputTest {
         System.setOut(new PrintStream(testOutput));
 
         // when
-        Controller.startRace(race, randomNumbers);
+        controller.startRace(race, randomNumbers);
 
         // then
         String result = testOutput.toString().trim();
-        assertThat("aaa : -\nbbb : \nccc : -").isEqualTo(result);
+        assertThat(result).contains("aaa : -\nbbb : \nccc : -");
     }
 
     @Test
@@ -50,8 +53,7 @@ public class OutputTest {
         System.setOut(new PrintStream(testOutput));
 
         // when
-        Controller.startRace(race, randomNumbers);
-        OutputManager.printWinner(race.findWinners());
+        controller.startRace(race, randomNumbers);
 
         // then
         String result = testOutput.toString().trim();
@@ -69,8 +71,7 @@ public class OutputTest {
         System.setOut(new PrintStream(testOutput));
 
         // when
-        Controller.startRace(race, randomNumbers);
-        OutputManager.printWinner(race.findWinners());
+        controller.startRace(race, randomNumbers);
 
         // then
         String result = testOutput.toString().trim();

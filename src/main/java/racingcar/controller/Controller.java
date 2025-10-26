@@ -1,41 +1,47 @@
 package racingcar.controller;
 
-import racingcar.view.InputManager;
-import racingcar.view.OutputManager;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 import racingcar.model.*;
 
 import java.util.List;
 
 public class Controller {
+    private final InputView inputView;
+    private final OutputView outputView;
+
+    public Controller(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+    }
 
     public void execute() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String carNamesInput = InputManager.input();
+        String carNamesInput = inputView.inputCarNames();
         List<String> carNameList = CarNameParser.parseCarNames(carNamesInput);
         List<Car> carList = CarFactory.createCarListFromNames(carNameList);
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        String roundCount = InputManager.input();
+        String roundCount = inputView.inputRoundCount();
         InputValidator.validateRoundCount(roundCount);
 
         Race race = new Race(carList, Integer.parseInt(roundCount));
         startRace(race);
-        OutputManager.printWinner(race.findWinners());
     }
 
     // 실제 사용할 startRace 메서드
-    public static void startRace(Race race) {
+    public void startRace(Race race) {
         for (int i = 0; i < race.getRoundCount(); i++) {
             race.playRound();
-            OutputManager.roundOutput(race.getCarList());
+            outputView.printRoundResult(race.getCarList());
         }
+        outputView.printWinner(race.findWinners());
     }
 
     // 테스트용 startRace 메서드
-    public static void startRace(Race race, List<List<Integer>> roundRandomNumbers) {
+    public void startRace(Race race, List<List<Integer>> roundRandomNumbers) {
         for (int i = 0; i < race.getRoundCount(); i++) {
             race.playRound(roundRandomNumbers.get(i));
-            OutputManager.roundOutput(race.getCarList());
+            outputView.printRoundResult(race.getCarList());
         }
+        outputView.printWinner(race.findWinners());
     }
 }

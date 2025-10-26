@@ -5,12 +5,16 @@ import org.junit.jupiter.api.Test;
 import racingcar.controller.Controller;
 import racingcar.model.Car;
 import racingcar.model.Race;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ControllerTest {
+    private final Controller controller = new Controller(new InputView(), new OutputView());
+
     @Test
     @DisplayName("시도 횟수만큼 경주를 진행한다.")
     void startRace_테스트() {
@@ -21,12 +25,10 @@ public class ControllerTest {
         List<Integer> expectedPositions = List.of(2, 0, 1);
 
         // when
-        Controller.startRace(race, roundRandomNumbers);
+        controller.startRace(race, roundRandomNumbers);
 
         // then
-        List<Integer> actualPositions = carList.stream()
-                .map(Car::getPosition)
-                .toList();
+        List<Integer> actualPositions = carList.stream().map(Car::getPosition).toList();
 
         assertThat(actualPositions).isEqualTo(expectedPositions);
     }

@@ -5,12 +5,15 @@ import org.junit.jupiter.api.Test;
 import racingcar.controller.Controller;
 import racingcar.model.Car;
 import racingcar.model.Race;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RaceTest {
+    private final Controller controller = new Controller(new InputView(), new OutputView());
 
     @Test
     @DisplayName("라운드 진행 시, 각 자동차가 랜덤 값에 따라 이동한다")
@@ -39,7 +42,7 @@ public class RaceTest {
         List<Car> carList = List.of(new Car("pobi"), new Car("woni"), new Car("jun"));
         Race race = new Race(carList, 3);
         List<List<Integer>> roundRandomNumbers = List.of(List.of(5, 3, 7), List.of(1, 1, 1), List.of(6, 3, 3));
-        Controller.startRace(race, roundRandomNumbers);
+        controller.startRace(race, roundRandomNumbers);
         List<Car> expectedWinner = List.of(new Car("pobi"));
 
         // when
@@ -56,7 +59,7 @@ public class RaceTest {
         List<Car> carList = List.of(new Car("pobi"), new Car("woni"), new Car("jun"));
         Race race = new Race(carList, 3);
         List<List<Integer>> roundRandomNumbers = List.of(List.of(5, 3, 7), List.of(1, 1, 1), List.of(6, 3, 6));
-        Controller.startRace(race, roundRandomNumbers);
+        controller.startRace(race, roundRandomNumbers);
         List<Car> expectedWinners = List.of(new Car("pobi"), new Car("jun"));
 
         // when
