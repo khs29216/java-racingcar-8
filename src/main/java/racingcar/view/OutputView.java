@@ -3,6 +3,7 @@ package racingcar.view;
 import racingcar.model.Car;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OutputView {
 
@@ -15,20 +16,13 @@ public class OutputView {
     }
 
     private void printPosition(Car car) {
-        for (int i = 0; i < car.getPosition(); i++) {
-            System.out.print("-");
-        }
+        System.out.print("-".repeat(car.getPosition()));
     }
 
     public void printWinner(List<Car> winnerCarList) {
-        System.out.print("최종 우승자 : ");
-        for (int i = 0; i < winnerCarList.size(); i++) {
-            System.out.print(winnerCarList.get(i).getName());
-
-            if (i < winnerCarList.size() - 1) {
-                System.out.print(", ");
-            }
-        }
-        System.out.println();
+        String winners = winnerCarList.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+        System.out.println("최종 우승자 : " + winners);
     }
 }
