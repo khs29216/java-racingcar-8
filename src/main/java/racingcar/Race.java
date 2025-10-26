@@ -12,24 +12,6 @@ public class Race {
         this.roundCount = roundCount;
     }
 
-    // 테스트용 startRace 메서드
-    public void startRace(List<List<Integer>> roundRandomNumbers) {
-        for (int i = 0; i < roundCount; i++) {
-            playRound(roundRandomNumbers.get(i));
-            OutputManager.roundOutput(carList);
-        }
-        OutputManager.printWinner(findWinners());
-    }
-
-    // 실제 사용할 startRace 메서드
-    public void startRace() {
-        for (int i = 0; i < roundCount; i++) {
-            playRound();
-            OutputManager.roundOutput(carList);
-        }
-        OutputManager.printWinner(findWinners());
-    }
-
     // 테스트용 playRound 메서드
     public void playRound(List<Integer> randomNumbers) {
         for (int i = 0; i < carList.size(); i++) {
@@ -39,7 +21,7 @@ public class Race {
     }
 
     // 실제 사용할 playRound 메서드
-    private void playRound() {
+    public void playRound() {
         for (Car car : carList) {
             car.move();
         }
@@ -60,4 +42,7 @@ public class Race {
         return roundCount;
     }
 
+    public List<Car> getCarList() {
+        return carList;
+    }
 }

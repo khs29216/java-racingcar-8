@@ -28,7 +28,7 @@ public class OutputTest {
         System.setOut(new PrintStream(testOutput));
 
         // when
-        race.startRace(randomNumbers);
+        Controller.startRace(race, randomNumbers);
 
         // then
         String result = testOutput.toString().trim();
@@ -46,7 +46,8 @@ public class OutputTest {
         System.setOut(new PrintStream(testOutput));
 
         // when
-        race.startRace(randomNumbers);
+        Controller.startRace(race, randomNumbers);
+        OutputManager.printWinner(race.findWinners());
 
         // then
         String result = testOutput.toString().trim();
@@ -64,7 +65,8 @@ public class OutputTest {
         System.setOut(new PrintStream(testOutput));
 
         // when
-        race.startRace(randomNumbers);
+        Controller.startRace(race, randomNumbers);
+        OutputManager.printWinner(race.findWinners());
 
         // then
         String result = testOutput.toString().trim();
