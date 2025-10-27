@@ -2,9 +2,12 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.controller.Controller;
 import racingcar.model.Car;
 import racingcar.model.CarNameParser;
 import racingcar.model.InputValidator;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.List;
 
@@ -15,17 +18,17 @@ public class InputValidatorTest {
     @Test
     void 빈_문자열_예외_테스트() {
         assertAll(
-                () -> assertThrows(IllegalArgumentException.class, () -> CarNameParser.parseCarNames("")),
-                () -> assertThrows(IllegalArgumentException.class, () -> CarNameParser.parseCarNames(null))
+                () -> assertThrows(IllegalArgumentException.class, () -> InputValidator.validateNotNullOrEmpty("")),
+                () -> assertThrows(IllegalArgumentException.class, () -> InputValidator.validateNotNullOrEmpty(null))
         );
     }
 
     @Test
     void 문자열_내_공백_예외_테스트() {
         assertAll(
-                () -> assertThrows(IllegalArgumentException.class, () -> CarNameParser.parseCarNames("aa, bb")),
-                () -> assertThrows(IllegalArgumentException.class, () -> CarNameParser.parseCarNames("aaa a,bbb")),
-                () -> assertThrows(IllegalArgumentException.class, () -> CarNameParser.parseCarNames(" aaa,bbb "))
+                () -> assertThrows(IllegalArgumentException.class, () -> InputValidator.validateNoWhitespace("aa, bb")),
+                () -> assertThrows(IllegalArgumentException.class, () -> InputValidator.validateNoWhitespace("aaa a,bbb")),
+                () -> assertThrows(IllegalArgumentException.class, () -> InputValidator.validateNoWhitespace(" aaa,bbb "))
 
         );
     }

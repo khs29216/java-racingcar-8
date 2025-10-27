@@ -17,6 +17,8 @@ public class Controller {
 
     public void execute() {
         String carNamesInput = inputView.inputCarNames();
+        InputValidator.validateNotNullOrEmpty(carNamesInput);
+        InputValidator.validateNoWhitespace(carNamesInput);
         List<String> carNameList = CarNameParser.parseCarNames(carNamesInput);
         List<Car> carList = CarFactory.createCarListFromNames(carNameList);
 
